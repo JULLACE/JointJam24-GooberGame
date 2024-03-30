@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position - transform.up, -Vector2.up, castDist);
         if (hit) {
             state = PlayerState.Grounded;
-            print("Hit " + hit.distance);
+            print("Hit");
         }
         else {
             state = PlayerState.Midair;
