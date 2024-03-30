@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
     }
 
     void OnDrawGizmos() {
-        Gizmos.DrawLine(transform.position - transform.up, transform.position - (-Vector3.up * castDist));
+        Gizmos.DrawLine(transform.position - transform.up, (transform.position - transform.up) + (-Vector3.up * castDist));
     }
 
 }
