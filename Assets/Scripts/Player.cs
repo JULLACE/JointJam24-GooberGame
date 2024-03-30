@@ -27,10 +27,15 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
+    
+    // DA ARTIST WROTE THIS :D
+    public Animator animator;
     // Update is called once per frame
     void Update()
     {
+        // I ALSO WROTE THIS ONE :D
+        animator.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+        
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
         rb.position += input * speed * Time.deltaTime;
         checkJump();
