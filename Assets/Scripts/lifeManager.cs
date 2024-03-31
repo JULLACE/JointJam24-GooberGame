@@ -13,7 +13,7 @@ public class lifeManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 2;
+        health = 6;
         gameOver.gameObject.SetActive(false);
         l1.gameObject.SetActive(true);
         l2.gameObject.SetActive(true);
