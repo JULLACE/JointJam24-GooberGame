@@ -1,1 +1,1 @@
-![goobre](https://github.com/JULLACE/JointJam24/Assets/Sprites/UI_Assets/BlueTitleGoober.png)
+![goobre](https://github.com/JULLACE/JointJam24/blob/main/Assets/Sprites/UI_Assets/BlueTitleGoober.png)
