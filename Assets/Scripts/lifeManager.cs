@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class lifeManager : MonoBehaviour
 {
     public GameObject gameOver, l1, l2, l3;
     public static int health = 3;
+    public static int moons = 0;
+    public Text moonText;
     
     // Start is called before the first frame update
     void Start()
     {
-        health = 6;
+        health = 2;
         gameOver.gameObject.SetActive(false);
         l1.gameObject.SetActive(true);
         l2.gameObject.SetActive(true);
@@ -48,5 +51,7 @@ public class lifeManager : MonoBehaviour
                 l3.gameObject.SetActive(false);
                 break;
         }
+        print("Moons: " + moons.ToString());
+        moonText.text = "x" + moons.ToString();
     }
 }

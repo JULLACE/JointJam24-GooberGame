@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class getMoonStone : MonoBehaviour
 {
@@ -13,5 +14,9 @@ public class getMoonStone : MonoBehaviour
             flower.gameObject.SetActive(false);
             aura.gameObject.SetActive(false);
         }
+
+        lifeManager.health = 6;
+        lifeManager.moons++;
+        gameObject.SetActive(false);
     }
 }
