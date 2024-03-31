@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class FlashlightDirection : MonoBehaviour
 {
-    [SerializeField] BoxCollider cone;
-
     void Update()
     {
         Vector3 mousePos = Input.mousePosition;

@@ -128,6 +128,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6422489218596074120, guid: 88d0318a1eb3f6645b32a5c9bb9a2112, type: 3}
   m_PrefabInstance: {fileID: 394801993}
   m_PrefabAsset: {fileID: 0}
+--- !u!108 &352531512 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 5966373280903029578, guid: 88d0318a1eb3f6645b32a5c9bb9a2112, type: 3}
+  m_PrefabInstance: {fileID: 394801993}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &394801993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -216,9 +221,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7207186415627142111, guid: 88d0318a1eb3f6645b32a5c9bb9a2112, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 176878525}
+    - target: {fileID: 7207186415627142111, guid: 88d0318a1eb3f6645b32a5c9bb9a2112, type: 3}
+      propertyPath: m_Light
+      value: 
+      objectReference: {fileID: 352531512}
+    - target: {fileID: 7207186415627142111, guid: 88d0318a1eb3f6645b32a5c9bb9a2112, type: 3}
+      propertyPath: drainRate
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207186415627142111, guid: 88d0318a1eb3f6645b32a5c9bb9a2112, type: 3}
+      propertyPath: rechargeRate
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7382780833559699550, guid: 88d0318a1eb3f6645b32a5c9bb9a2112, type: 3}
       propertyPath: m_Name
       value: PlayerWithLight Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382780833559699550, guid: 88d0318a1eb3f6645b32a5c9bb9a2112, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -684,6 +709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 616402f0afd9aa6459c73da747bb495a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockY: 0
   FollowSpeed: 2
   target: {fileID: 176878525}
 --- !u!1 &1828880178
