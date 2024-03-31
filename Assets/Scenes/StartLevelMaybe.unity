@@ -560,6 +560,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &112481678 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2467190060884526924, guid: 4d7dbc18e75175244a5a15256f8276c6, type: 3}
+  m_PrefabInstance: {fileID: 1562948303}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &168810324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2556,6 +2561,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8535949892678156904, guid: 4d7dbc18e75175244a5a15256f8276c6, type: 3}
+      propertyPath: jump
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8535949892678156904, guid: 4d7dbc18e75175244a5a15256f8276c6, type: 3}
+      propertyPath: speed
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3429,7 +3442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowSpeed: 2
-  target: {fileID: 0}
+  target: {fileID: 112481678}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
