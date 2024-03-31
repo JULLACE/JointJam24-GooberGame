@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     [SerializeField] float speed = 5.0f;
     [SerializeField] float jump = 500.0f;
     [SerializeField] float castDist;
-    [SerializeField] float decayRate;
 
     public enum PlayerState
     {
@@ -20,7 +19,6 @@ public class Player : MonoBehaviour
 
     private PlayerState state;
     private Rigidbody2D rb;
-    // IEnumerator jumpRoutine;
 
     void Start()
     {
@@ -40,23 +38,6 @@ public class Player : MonoBehaviour
         checkJump();
     }
 
-    // IEnumerator DoJump()
-    // {
-    //     rb.AddForce(new Vector2(rb.velocity.x, jump));
-
-    //     // Wait 5 frames until processing hold
-    //     for (int i = 0; i < 5; i++) yield return null;
-
-    //     float currentForce = jump / 2;
-    //     while(Input.GetKey(KeyCode.Space) && currentForce > 0) {
-    //         print("Held");
-    //         rb.AddForce(Vector2.up * currentForce);
-    //         currentForce -= decayRate * Time.deltaTime;
-    //         yield return null;
-    //     }
-    // }
-
-
     void checkJump() 
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position - transform.up, -Vector2.up, castDist);
@@ -69,9 +50,6 @@ public class Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && state == PlayerState.Grounded) 
         {
-            // if (jumpRoutine != null) StopCoroutine(jumpRoutine);
-            // jumpRoutine = DoJump();
-            // StartCoroutine(jumpRoutine);
             rb.AddForce(new Vector2(rb.velocity.x, jump));
         }
     }
