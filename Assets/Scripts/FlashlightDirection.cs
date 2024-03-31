@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class FlashlightDirection : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] BoxCollider cone;
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 mousePos = Input.mousePosition;

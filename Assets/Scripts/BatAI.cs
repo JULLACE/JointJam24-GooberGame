@@ -8,31 +8,67 @@ using UnityEngine.UIElements;
 public class BatAI : MonoBehaviour
 {
     [SerializeField] BoxCollider2D boxCollider;
+    [SerializeField] Transform target;
     [SerializeField] LayerMask playerLayer;
+
+    [SerializeField] float maxHealth;
     [SerializeField] float range;
     [SerializeField] float speed;
-    [SerializeField] Transform target;
     [SerializeField] float dashPower;
-    [SerializeField] float dashCooldown;
+    [SerializeField] float attackCooldown;
+    [SerializeField] float chaseCooldown;
 
-    [SerializeField] Animator animator;
 
+    float cooldownTimer = Mathf.Infinity; 
+    float chaseTimer = Mathf.Infinity;
+    float diff;
+    float currHealth;
+
+    Animator animator;
     IEnumerator dashRoutine;
+    Rigidbody2D rb;
+
+    void Awake() {
+        animator = GetComponent<Animator>();
+        currHealth = maxHealth;
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Update()
     {   
-        float diff = Mathf.Abs(transform.position.magnitude - target.position.magnitude);
-        if (PlayerInSight() && diff > 1.5f) {
-            animator.SetFloat("attackFloat", 1f);
+        cooldownTimer += Time.deltaTime;
+        chaseTimer += Time.deltaTime;
+
+        if (currHealth <= 0) {
+            animator.SetTrigger("death");
+            rb.gravityScale = 1f;
+        }
+        else {
+            BehaviorController();
+            DirectionCheck();
+        }
+    }
+
+    void BehaviorController() {
+        diff = Mathf.Abs((transform.position - target.position).magnitude);
+        if (PlayerInSight() && diff > 1f) {
+            chaseTimer = 0;
             print("I HAVE YOU");
             transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
-        else if (PlayerInSight() && (diff > .7f && diff < 1f)) {
-            animator.SetFloat("attackFloat", -1f);
-            transform.position = Vector3.MoveTowards(transform.position, target.position, dashPower * Time.deltaTime);
+        else if (PlayerInSight() && diff < 1f) {
+            if (cooldownTimer >= attackCooldown) {
+                chaseTimer = 0;
+                cooldownTimer = 0;
+                animator.SetTrigger("attackAnim");
+                transform.position = Vector3.MoveTowards(transform.position, target.position, dashPower * Time.deltaTime);
+            }
         }
-
-        DirectionCheck();
+        else if (!PlayerInSight()) {
+            if (chaseTimer < chaseCooldown) {
+                transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            }
+        }
     }
     
     void DirectionCheck() {
@@ -53,5 +89,18 @@ public class BatAI : MonoBehaviour
     void OnDrawGizmos() {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(boxCollider.bounds.center + (transform.right * transform.localScale.normalized.x), boxCollider.bounds.size * range);
+    }
+
+    void DamagePlayer() {
+        if (diff <= 1f) {
+            lifeManager.health--;
+            print("HIT");
+        }
+    }
+
+    void ApplyDamage(float amt) {
+        print("I have been hurt.");
+        animator.SetTrigger("hurtAnim");
+        currHealth -= amt;
     }
 }
